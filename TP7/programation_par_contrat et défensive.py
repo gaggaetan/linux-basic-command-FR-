@@ -156,7 +156,7 @@ class Fraction:
                 - Fraction(10,5); other = Fraction(-5,3) => return  Fraction(30,-25)
         RAISE : ZeroDivisionError("On ne peut pas diviser par zéro
         """
-        if other.numerator == 0:
+        if other.numerator == 0 or self.numerator == 0:
             raise ZeroDivisionError("On ne peut pas diviser par zéro.")
 
         num = self._simNum * other._simDen
