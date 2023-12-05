@@ -8,7 +8,7 @@ class Fraction:
     This class allows fraction manipulations through several operations.
     """
 
-    def __init__(self, num: float =0 , den: float=1):
+    def __init__(self, num: int =0 , den: int=1):
         """This builds a fraction based on some numerator and denominator.
 
         PRE :   inisalise  self.numerateur et self.numerateur:
@@ -23,10 +23,11 @@ class Fraction:
                     - self.__den = 5
                     - self._simNum = 2
                     - self._simDen = 1
-        RAISE : ZeroDivisionError => si den est égal à zero
+        RAISE : ZeroDivisionError => le dénominatuer ne peut pas etre égal à 0
         """
+
         if den == 0 :
-            raise ZeroDivisionError("La fraction ne peut pas avoir un dénominateur null.")
+            raise ZeroDivisionError
 
         if num >= 0 and den >= 0:
             self.__num = num
@@ -53,7 +54,7 @@ class Fraction:
     def numerator(self):
         """retourne le numerateur
 
-        PRE : / (Self est imuable)
+        PRE : /  
         POST : retourne the numérator (int)
         """
         return self.__num
@@ -61,11 +62,27 @@ class Fraction:
     def denominator(self):
         """retourne le denominateur
 
-        PRE : / (Self est imuable)
+        PRE : /  
         POST : retourne the denominateur (int)
         """
         return self.__den
-        pass
+
+    @property
+    def numerator_simplifiée (self):
+        """retourne la version simplifiée du numerateur
+
+        PRE : /  
+        POST : retourne the numérator (int)
+        """
+        return self._simNum
+    @property
+    def denominator_simplifiée (self):
+        """retourne la version simplifiée du denominateur
+
+        PRE : /  
+        POST : retourne the denominateur (int)
+        """
+        return self._simDen
 
 
 # ------------------ Textual representations ------------------
@@ -73,7 +90,7 @@ class Fraction:
     def __str__(self) :
         """Return a textual representation of the reduced form of the fraction
 
-        PRE : / (Self est imuable)
+        PRE : /  
         POST : Retourne une représentation textuelle de la fraction réduite.
             exemple :
                 - fraction(10,5) => 2/1
@@ -85,7 +102,7 @@ class Fraction:
         """Return a textual representation of the reduced form of the fraction as a mixed number
         A mixed number is the sum of an integer and a proper fraction
 
-        PRE : / (Self est imuable)
+        PRE : /  
         POST : Retourne une représentation textuelle de la fraction réduite sous la forme d'un nombre entier et de son reste.
             exemple :
                 - fraction(10,5) => 2 + 0/1
@@ -103,7 +120,7 @@ class Fraction:
     def __add__(self, other: 'Fraction'):
         """Overloading of the + operator for fractions (return la somme e 2 object fraction)
 
-         PRE : other (class : Fraction) : est un object avec la classe fraction. (Self et other sont imuable)
+         PRE : other (class : Fraction) : est un object avec la classe fraction.   
          POST : Retourne un object avec la classe fraction qui à en parametres le résultat de la somme des deux
                 fractions (self et other).
             exemple :
@@ -118,7 +135,7 @@ class Fraction:
     def __sub__(self, other: 'Fraction'):
         """Overloading of the - operator for fractions
 
-        PRE : other (class : Fraction) : est un object avec la classe fraction. (Self et other sont imuable)
+        PRE : other (class : Fraction) : est un object avec la classe fraction.   
         POST : Retourne un object avec la classe fraction qui à en parametres le résultat de la soustraction
                 des deux fractions (self et other).
             exemple :
@@ -133,7 +150,7 @@ class Fraction:
     def __mul__(self, other: 'Fraction'):
         """Overloading of the * operator for fractions
 
-        PRE :  other (class : Fraction) : est un object avec la classe fraction. (Self et other sont imuable)
+        PRE :  other (class : Fraction) : est un object avec la classe fraction.   
         POST : Retourne un object avec la classe fraction qui à en parametres le résultat de la multiplication
                 des deux fractions (self et other).
             exemple :
@@ -148,16 +165,16 @@ class Fraction:
     def __truediv__(self, other: 'Fraction'):
         """Overloading of the / operator for fractions (avoir un raise si other = 0) (le try exept et pour récupere le raise => ne sert à rien car pour la divison on multiple et divise pas réelement)
 
-        PRE : other (class : Fraction) : est un object avec la classe fraction. (Self et other sont imuable)
+        PRE : other (class : Fraction) : est un object avec la classe fraction.   
         POST : Retourne un object avec la classe fraction qui à en parametres le résultat de la multiplication
                 des deux fractions (self et other). Le dénominateur ne peut pas etre négatif au retour.
             exemple :
                 - Fraction(10,5); other = Fraction(5,3) => return  Fraction(30,25)
                 - Fraction(10,5); other = Fraction(-5,3) => return  Fraction(30,-25)
-        RAISE : ZeroDivisionError("On ne peut pas diviser par zéro
+        RAISE : ZeroDivisionError : si le numératuer du other est égal à 0 car on ne peut pas diviser par 0
         """
-        if other.numerator == 0 or self.numerator == 0:
-            raise ZeroDivisionError("On ne peut pas diviser par zéro.")
+        if self.numerator == 0:
+            raise ZeroDivisionError
 
         num = self._simNum * other._simDen
         den = self._simDen * other._simNum
@@ -172,18 +189,18 @@ class Fraction:
     def __pow__(self, other: 'Fraction'):
         """Overloading of the ** operator for fractions
 
-        PRE : other (class : Fraction) : est un object avec la classe fraction. (Self et other sont imuable)
+        PRE : other (class : Fraction) : est un object avec la classe fraction.   
         POST : Retourne un float qui est égal à la fraction self exposant la fraction other.
             exemple :
                 - Fraction(10,5); other = Fraction(5,3) => return  3.175..
                 - Fraction(10,5); other = Fraction(-5,3) => return  0.315..
                 - Fraction(10,5); other = Fraction(0,3) => return  1
-        RAISE : Cannot raise 0.0 to a negative power)
+        RAISE : Cannot on ne peut pas faire 0 exposant un nombre négatif
         """
         base = self._simNum / self._simDen
         exponent = other._simNum / other._simDen
         if base == 0 and exponent < 0:
-            raise ValueError("Cannot raise 0.0 to a negative power")
+            raise ValueError
 
         return round(base**exponent,3)
 
@@ -191,7 +208,7 @@ class Fraction:
     def __eq__(self, other: 'Fraction') :
         """Overloading of the == operator for fractions
 
-        PRE : other (class : Fraction) : est un object avec la classe fraction. (Self et other sont imuable)
+        PRE : other (class : Fraction) : est un object avec la classe fraction.   
         POST : Retourne un booléen (True/False) disant si valeur de la class Fraction self est égal à la valeur de la class Fraction de other.
             exemple :
                 - Fraction(10,5); other = Fraction(5,3) => return  Fasle
@@ -202,7 +219,7 @@ class Fraction:
     def __float__(self) :
         """Returns the decimal value of the fraction
 
-        PRE : / (Self et other sont imuable)
+        PRE : /   
         POST : Retourne la valeur décimal de la fraction.
             exemple :
                 - Fraction(10,5); => return 2
@@ -216,7 +233,7 @@ class Fraction:
     def is_greater(self, other: 'Fraction') :
         """Overloading of the > operator for fractions
 
-        PRE : other (class : Fraction) : est un object avec la classe fraction. (Self et other sont imuable)
+        PRE : other (class : Fraction) : est un object avec la classe fraction.   
         POST : Retourne un booléen (True/False) disant si valeur de la class Fraction self est plus grande
                 que la valeur de la class Fraction de other.
             exemple :
@@ -229,7 +246,7 @@ class Fraction:
     def is_smaller(self, other: 'Fraction') :
         """Overloading of the < operator for fractions
 
-        PRE : other (class : Fraction) : est un object avec la classe fraction. (Self et other sont imuable)
+        PRE : other (class : Fraction) : est un object avec la classe fraction.   
         POST : Retourne un booléen (True/False) disant si valeur de la class Fraction self est plus petite
                 que la valeur de la class Fraction de other.
             exemple :
@@ -242,22 +259,22 @@ class Fraction:
     def __rest__(self, other: 'Fraction') :
         """find the rest from a division between two fraction
 
-        PRE : other (class : Fraction) : est un object avec la classe fraction. (Self et other sont imuable)
+        PRE : other (class : Fraction) : est un object avec la classe fraction.   
         POST : Retourne le reste (float) de la division entre les 2 fractions (self et other).
                 Le numérateur de other ne peut pas etre égal à 0.
             exemple :   Fraction(10,5); other = Fraction(5,5) => return  0
                         Fraction(10,5); other = Fraction(11,5) => return  2
                         Fraction(10,5); other = Fraction(2,3) => return  1.1102230246251565e-16
-        RAISE : ZeroDivisionError("On ne peut pas diviser par zéro")
+        RAISE : ZeroDivisionError : car on ne peut pas diviser par un nombre négatif
         """
         if other._simNum == 0 :
-            raise ZeroDivisionError("On ne peut pas diviser par zéro.")
+            raise ZeroDivisionError
         return round((self._simNum/self._simDen) % (other._simNum/other._simDen),1)
 
     def __reverse__(self) :
         """find reverse from the fraction
 
-        PRE : / (Self est imuable)
+        PRE : /  
         POST : Retourne un object avec la classe fraction qui à en parametres l'inverse de l'object self.
             exemple :
                 - Fraction(10,5); => return  Fraction(-10,5)
@@ -272,7 +289,7 @@ class Fraction:
     def __neg__(self) :
         """find the negative form of the fraction
 
-        PRE : / (Self est imuable)
+        PRE : /  
         POST : Retourne un object avec la classe fraction qui à en parametres le négatif de l'object self.
                 Si l'object est déja négatif ou égal à 0 il ne renvera la un object identique au self.
             exemple :
@@ -290,7 +307,7 @@ class Fraction:
     def __abs__(self) :
         """find the positive form of the fraction
 
-        PRE : / (Self est imuable)
+        PRE : /  
         POST : Retourne un object avec la classe fraction qui à en parametres le positif de l'object self.
                 Si l'object est déja positif ou égal à 0 il ne renvera la un object identique au self.
             exemple :   Fraction(10,5); => return  10/5
@@ -305,7 +322,7 @@ class Fraction:
     def is_zero(self):
         """Check if a fraction's value is 0
 
-        PRE : / (Self est imuable)
+        PRE : /  
         POST : Retourne un Booléen (True/False) qui dit si la fraction est égal à 0.
             exemple :
                 - Fraction(0,5); => return  True
@@ -317,7 +334,7 @@ class Fraction:
     def is_integer(self):
         """Check if a fraction is integer (ex : 8/4, 3, 2/2, ...)
 
-        PRE : / (Self est imuable)
+        PRE : /  
         POST : Retourne un Booléen (True/False) qui dit si la valeur de la fraction est un integer.
             exemple :
                 - Fraction(10,5); => return  True
@@ -328,7 +345,7 @@ class Fraction:
     def is_proper(self):
         """Check if the absolute value of the fraction is < 1
 
-        PRE : / (Self est imuable)
+        PRE : /  
         POST : Retourne un Booléen (True/False) qui dit si la valeur absolue de la fraction est inférieur à 1.
             exemple :
                 - Fraction(4,5); => return  True
@@ -339,7 +356,7 @@ class Fraction:
     def is_unit(self):
         """Check if a fraction's numerator is 1 in its reduced form
 
-        PRE : / (Self est imuable)
+        PRE : /  
         POST : Retourne un Booléen (True/False) qui dit si la valeur à la forme simplifier de la  fraction est égal à 1.
             exemple :
                 - Fraction(1,5); => return  True
@@ -354,7 +371,7 @@ class Fraction:
 
         Two fractions are adjacents if the absolute value of the difference them is a unit fraction
 
-        PRE : other (class : Fraction) : est un object avec la classe fraction. (Self et other sont imuable)
+        PRE : other (class : Fraction) : est un object avec la classe fraction.   
         POST : Retourne un booléen (True/False) disant si valeur absolue de la class Fraction self est edjacent (+1 ou -1)
                 à la valeur absolue de la class Fraction de other.
             exemple :
@@ -363,28 +380,55 @@ class Fraction:
                 - Fraction(10,5); other = Fraction(-5,5) => return  True
                 - Fraction(10,5); other = Fraction(0,5) => return  False
         """
-        less_one_dif =abs(self._simNum/self._simDen) == abs(other._simNum/other._simDen)+1
-        add_one_dif = abs(self._simNum/self._simDen) == abs(other._simNum/other._simDen)-1
+        difference_numerator = self._simNum * other._simDen - other._simNum * self._simDen
 
-        return less_one_dif or add_one_dif
+        absolute_difference = abs(difference_numerator)
+        return absolute_difference == 1
 
 
 
 #voila quelques tests
+if __name__ == "__main__" :
+    print(f"frac 1 : Fraction(10, -5)\n"
+          f"frac 2 : Fraction(-5,-5)")
+    test = Fraction(10, -5)
+    test2 = Fraction(-5,-5)
+    print(f"frac1 num :{test.numerator}")
+    print(f"frac1 den : {test.denominator}")
+    print(f"frac2 num :{test2.numerator}")
+    print(f"frac2 den : {test2.denominator}")
+    print(f"__add__ : {test + test2}") # pour le __ad__
+    print(f"__truediv__ : {test.__truediv__(test2)}")
+    print(f"__eq__ : {test.__eq__(test2)}")
+    print(f"is_zero : {test.is_zero()}")
+    print(f"__neg__ : {test.__neg__()}")
+    print(f"__abs__ : {test.__abs__()}")
+    print(f"is_adjacent_to : {test.is_adjacent_to(test2)}")
 
-print(f"frac 1 : Fraction(10, -5)\n"
-      f"frac 2 : Fraction(-5,-5)")
-test = Fraction(10, -5)
-test2 = Fraction(-5,-5)
-print(f"frac1 num :{test.numerator}")
-print(f"frac1 den : {test.denominator}")
-print(f"frac2 num :{test2.numerator}")
-print(f"frac2 den : {test2.denominator}")
-print(f"__add__ : {test.__add__(test2)}")
-print(f"__truediv__ : {test.__truediv__(test2)}")
-print(f"__eq__ : {test.__eq__(test2)}")
-print(f"is_zero : {test.is_zero()}")
-print(f"__neg__ : {test.__neg__()}")
-print(f"__abs__ : {test.__abs__()}")
-print(f"is_adjacent_to : {test.is_adjacent_to(test2)}")
+    #test des exeptions
+    try :
+        frac = Fraction(10, 0)
+    except ZeroDivisionError:
+        print("ZeroDivisionError : La fraction ne peut pas avoir un dénominateur null")
+
+    try :
+        frac1 = Fraction(10, 2)
+        frac2 = Fraction(0,2)
+        frac1.__truediv__(frac2)
+    except ZeroDivisionError :
+        print("On ne peut pas diviser par zéro.")
+
+    try :
+        frac1 = Fraction(0, 2)
+        frac2 = Fraction(-2,2)
+        frac1.__pow__(frac2)
+    except ValueError :
+        print("On ne peut pas diviser 0 par un nombre négatif")
+
+    try :
+        frac1 = Fraction(5, 2)
+        frac2 = Fraction(0,2)
+        frac1.__rest__(frac2)
+    except ZeroDivisionError :
+        print("On ne peut pas diviser par zéro.")
 
