@@ -68,7 +68,7 @@ class Fraction:
         return self.__den
 
     @property
-    def numerator_simplifiée (self):
+    def numerator_simplifiee (self):
         """retourne la version simplifiée du numerateur
 
         PRE : /  
@@ -76,7 +76,7 @@ class Fraction:
         """
         return self._simNum
     @property
-    def denominator_simplifiée (self):
+    def denominator_simplifiee (self):
         """retourne la version simplifiée du denominateur
 
         PRE : /  
