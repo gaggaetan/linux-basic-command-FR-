@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>bestream</title>
+    <link href="CSS/header.css" rel="stylesheet">
+    <link href="CSS/section.css" rel="stylesheet">
+    <link href="CSS/popup.css" rel="stylesheet">
+    <link href="CSS/categories.css" rel="stylesheet">
+    <script src="JS/header.js"></script>
+    <script src="JS/section.js"></script>
+    <script src="JS/popup.js"></script>
+    <script src="JS/categories.js"></script>
+</head>
+<body>
+<header><div id="test">
+    <h1><div id="title_1">be</div><div id="title_2">st</div><div id="title_3">ream</div></h1>
+    <select id="categoriesButton">
+        <option selected disabled hidden>categories </option>
+    </select>
+    <fieldset id="rescharche" onfocusout="clearPropositionContainer()">
+         <input id="searchValue" type="search" placeholder="search ..." oninput="search(this.parentNode)" >
+        <div id="propositionContainer"></div>
+
+    </fieldset>
+</div>
+</header>
+
+
+
+
+
+<section id="propositionSection"></section>
+
+<div id="popup1" class="box">
+    <div id="popupTitle">le titre</div>
+    <div id="popupExit" onclick="popupExit()"></div>
+    <div id="popupAffiche"></div>
+    <div id="popupAnnee"></div>
+    <div id="popupCategorie"></div>
+    <div id="popupResume">resumer</div>
+    <div id="popupDuree">duree</div>
+    <div id="popupEtoiles">etoile</div>
+    <div id="popupTorrens">Torrent</div>
+    <div id="popupProposition"></div>
+</div>
+
+
+
+</body>
+</html>
+

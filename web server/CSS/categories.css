@@ -1,0 +1,17 @@
+#categoriesButton{
+    height: 2em;
+    margin: auto 0 auto auto;
+
+    border: 1px #deb992 solid;
+    padding: 0.1em;
+    border-radius: 3px;
+
+
+    color: #838381;
+    background: #17202b;
+    cursor: pointer;
+}
+
+.categoriesoptions:focus{
+    filter: brightness(120%);
+}

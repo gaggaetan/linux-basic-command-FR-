@@ -1,0 +1,32 @@
+.TitleGenre{
+    font-size: 1.5em;
+    font-family: BrandonGrotesqueWeb-Thin,sans-serif;
+    color: #ece9e9;
+    text-transform: uppercase;
+    font-weight: 100;
+
+    margin: 1em 0 0.2em 0.25em;
+}
+
+.linearArrangement{
+    display: flex;
+    margin: 0 ;
+}
+.FilmDefaultProposition{
+    margin: 0 0.5em;
+    cursor: pointer;
+}
+
+.FilmDefaultPropositionCoverImage{
+    width: 100%;
+    height: auto;
+}
+
+#propositionSection{
+    width: 90%;
+    max-width: 950px;
+    height: 100%;
+    margin: auto;
+}
+
+

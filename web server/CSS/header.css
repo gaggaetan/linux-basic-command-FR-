@@ -1,0 +1,175 @@
+html{
+    margin: 0;
+    height: 100%;
+}
+body{
+    background: #0A1828;
+    margin: 0;
+
+    display: grid;
+    grid-column: 2 /1;
+}
+
+
+header{
+    display: flex;
+    justify-content: center;
+    background: #17202b;
+    max-height: 4.5em;
+    z-index: 10;
+
+
+}
+#test{
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    justify-content: space-between;
+
+    margin: 0;
+}
+
+/*logo*/
+h1{
+
+    color: #deb992;
+    display: flex;
+    margin: 0 0.5em 0.2em;
+
+    background: linear-gradient(#17202b, #17202b) padding-box,
+    linear-gradient(to right, #178582, #deb992, #deb992) border-box;
+
+    border: 3px solid transparent;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+}
+#title_1{
+    color: #178582;
+    font-size: 0.8em;
+    display: inline;
+    margin: auto 0 0.2em ;
+    flex: none;
+    font-family: "Doppio One";
+}
+#title_2{
+    color: #178582;
+    font-size: 1.5em;
+    margin: auto 0 0 0 ;
+    flex: none;
+    font-family: "Doppio One";
+    font-style: oblique;
+}
+#title_3{
+    color: #deb992;
+    font-size: 1.5em;
+    margin: auto 0 0 0 ;
+    flex: none;
+    font-style: oblique;
+    font-family: "Doppio One";
+}
+
+
+/*shearch place*/
+input::placeholder{
+    background: transparent;
+    color: #838381;
+    outline: none;
+
+}
+
+
+#rescharche{
+    margin: auto 3em auto 0;
+    border: none;
+}
+fieldset{
+    height: 1.87em;
+}
+
+input{
+    background: transparent;
+    color: white;
+    border-style: none;
+    border: 1px #deb992 solid;
+    border-radius: 3px;
+    padding: 0.5em;
+    width: 11em;
+    transition: width 0.4s linear,border-top-color 0.4s linear,border-right-color 0.4s linear,border-left-color 0.4s linear,border-bottom-color 0.4s linear;
+    outline: none;
+
+}
+input:focus{
+    border-style: none;
+    border: #178582 1px solid;
+    border-radius: 3px;
+    width: 15em;
+}
+
+[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 10px;
+    width: 10px;
+    background-image: url(../IMG/mark-with-a-cross-1740989_1280.png);
+    cursor: pointer;
+    background-size: 100%;
+}
+
+
+/*research bar proposition*/
+.proposition{
+    background: #17202b;
+    border: 1px solid #178582 ;
+    color: white;
+    z-index: 2;
+    height: 5em;
+    width: 12.4em;
+    cursor: pointer;
+
+
+    display: flex;
+}
+.proposition:hover{
+    filter: brightness(120%);
+}
+.proposition:not(:hover){
+    background: #121a22;
+}
+
+.research_medium_cover_image{
+    height: 4.5em;
+    width: auto;
+    margin: 0.25em 0.2em;
+}
+
+.titleProposition{
+    font-family: "Dubai Medium";
+    font-size: 1em;
+    max-height: 70%;
+    overflow: hidden;
+}
+
+#part2{
+    display: flex;
+    flex-direction:column;
+    width: 100%;
+}
+
+#stars{
+    margin: auto 0 0 auto;
+    scale: 0.75;
+
+}
+
+
+
+
+.star {
+    color: whitesmoke;
+
+}
+
+
+
+
